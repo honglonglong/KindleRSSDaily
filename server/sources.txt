@@ -1,2 +1,2 @@
-http://coolshell.cn/feed
-http://feeds.geekpark.net
+http://diygod.me/atom.xml
+https://www.appinn.com/feed/
