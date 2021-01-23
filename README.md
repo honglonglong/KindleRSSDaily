@@ -18,7 +18,9 @@ How to use:
 2. Specify the location of that file in send.py, let p = open('FILE_LOCATION','r')
 3. Put the rss resource in sources.txt line by line.
 4. Config send.py to send the mobi file to your kindle email
-5. Config the contab on the server to run dailyRSS.sh every day.
+5. Install required packages
+`pip install -r requirements.txt`
+6. Config the contab on the server to run dailyRSS.sh every day.
 
 
 

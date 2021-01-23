@@ -3,7 +3,6 @@ from shutil import copy
 from os import path, listdir, system
 import feedparser
 from jinja2 import Environment, PackageLoader
-import codecs
 
 templates_env = Environment(loader=PackageLoader('dailykindle', 'templates'))
 ROOT = path.dirname(path.abspath(__file__))
@@ -24,6 +23,7 @@ def build(feeds_urls, output_dir, max_old=None):
 
     # Give the feeds URLs to Feedparser to have nicely usable feed objects.
     feeds = [feedparser.parse(feed_url) for feed_url in feeds_urls]
+
     # Parse the feeds and grave useful information to build a structure
     # which will be passed to the templates.
     data = []
@@ -42,34 +42,28 @@ def build(feeds_urls, output_dir, max_old=None):
             'entries': [],
             'title': feed.feed.title,
         }
+
         entry_number = 0
         for entry in feed.entries:
+
             # We don't want old posts, just fresh news.
             if date.today() - date(*entry.published_parsed[0:3]) > max_old:
                 continue
 
-
             play_order += 1
             entry_number += 1
 
-            try:
-            	local_entry = {
-                	'number': entry_number,
-               		'play_order': play_order,
-                	'title': entry.title,
-                	'description': entry.description,
-                	'content': entry.content[0].value,
-            	}
-	    except AttributeError:
-		local_entry = {
-                        'number': entry_number,
-                        'play_order': play_order,
-                        'title': entry.title,
-                        'description': entry.description,
-                }
+            local_entry = {
+                'number': entry_number,
+                'play_order': play_order,
+                'title': entry.title,
+                'description': entry.description,
+            }
+
             local['entries'].append(local_entry)
 
         data.append(local)
+
     # Wrap data and today's date in a dict to use the magic of **.
     wrap = {
         'date': date.today().isoformat(),
@@ -99,8 +93,7 @@ def render_and_write(template_name, context, output_name, output_dir):
     `output_dir`/`output_name`."""
 
     template = templates_env.get_template(template_name)
-    f = codecs.open(path.join(output_dir, output_name), "w", "utf-8")
-    ##f = open(path.join(output_dir, output_name), "w")
+    f = open(path.join(output_dir, output_name), "w")
     f.write(template.render(**context))
     f.close()
 
@@ -127,12 +120,7 @@ python dailykindle.py <output dir> <day|week> <kindle_gen> <feed_url_1> [<feed_u
 
     print("Running DailyKindle...")
     print("-> Generating files...")
-    #print "argv[1]*****************" + argv[1]
-    #for item in argv[1]:
-    #    print "[[[[" + item + "]]]]"
     build(argv[4:], argv[1], length)
-    
     print("-> Build the MOBI file using KindleGen...")
     mobi(path.join(argv[1], 'daily.opf'), argv[3])
     print("Done")
-

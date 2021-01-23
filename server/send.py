@@ -5,30 +5,31 @@ import dailykindle
 import sendgrid
 import time
 
+dir = os.path.dirname(__file__)
 
-f = open("sources.txt", "r")
+f = open("/opt/kindledaily/sources.txt", "r")
 feeds = f.readlines()
 f.close()
 
-p = open("/root/kindle-pass.txt", "r")
+p = open("/opt/kindledaily/kindle-pass.txt", "r")
 s = p.readlines()
 p.close()
 
 
-dailykindle.build(feeds, '../temp/', timedelta(1))
-dailykindle.mobi('../temp/daily.opf', '../kindlegen/kindlegen')
+dailykindle.build(feeds, os.path.join(dir, '../temp/'), timedelta(1))
+dailykindle.mobi(os.path.join(dir, '../temp/daily.opf'), '../kindlegen/kindlegen')
 
 date = time.strftime("%m/%d/%Y")
 message = sendgrid.Mail()
 sg = sendgrid.SendGridClient(s[0].strip('\n'), s[1].strip('\n'))
 message = sendgrid.Mail()
-message.add_to('lvjun.summer@kindle.cn')
+message.add_to(s[2].strip('\n'))
 message.set_subject('Daily RSS'+ date)
-message.add_attachment("DailyRSS"+date+".mobi",'../temp/daily.mobi')
-message.set_from('lvjun.summer@live.com')
+message.add_attachment("DailyRSS"+date+".mobi",os.path.join(dir, '../temp/daily.mobi'))
+message.set_from(s[2].strip('\n'))
 message.set_text('RSS DAILY ' + date)
 status, msg = sg.send(message)
-print '[' + str(status) + ']' + msg
+print('[' + str(status) + ']' + msg)
 
 
 
