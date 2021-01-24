@@ -47,8 +47,10 @@ def build(feeds_urls, output_dir, max_old=None):
         for entry in feed.entries:
 
             # We don't want old posts, just fresh news.
-            if date.today() - date(*entry.published_parsed[0:3]) > max_old:
-                continue
+            # to handle some RSS doesn't have date
+            if hasattr(entry, 'published_parsed'):
+                if date.today() - date(*entry.published_parsed[0:3]) > max_old:
+                    continue
 
             play_order += 1
             entry_number += 1
