@@ -1,5 +1,4 @@
 Jinja2
 distribute
 feedparser
-wsgiref
 sendgrid
