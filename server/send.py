@@ -7,11 +7,11 @@ import time
 
 dir = os.path.dirname(__file__)
 
-f = open("/opt/kindledaily/sources.txt", "r")
+f = open("/opt/kindle/sources.txt", "r")
 feeds = f.readlines()
 f.close()
 
-p = open("/opt/kindledaily/kindle-pass.txt", "r")
+p = open("/opt/kindle/kindle-pass.txt", "r")
 s = p.readlines()
 p.close()
 
