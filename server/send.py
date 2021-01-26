@@ -18,7 +18,7 @@ p.close()
 
 
 dailykindle.build(feeds, os.path.join(dir, '../temp/'), timedelta(1))
-dailykindle.mobi(os.path.join(dir, '../temp/daily.opf'), '../kindlegen/kindlegen')
+dailykindle.mobi(os.path.join(dir, '../temp/daily.opf'), os.path.join(dir, '../kindlegen/kindlegen'))
 
 date = time.strftime("%m/%d/%Y")
 
