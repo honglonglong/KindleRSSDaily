@@ -10,15 +10,15 @@ AWS_REGION = "ap-southeast-1"
 # The character encoding for the email.
 CHARSET = "UTF-8"
 
-def send(from, to, subject, body, attachment=""):
+def send(sender, receiver, subject, body, attachment=""):
     # Create a new SES resource and specify a region.
     client = boto3.client('ses',region_name=AWS_REGION)
     # Create a multipart/mixed parent container.
     msg = MIMEMultipart('mixed')
     # Add subject, from and to lines.
     msg['Subject'] = subject 
-    msg['From'] = from 
-    msg['To'] = to
+    msg['From'] = sender 
+    msg['To'] = receiver
 
     # Create a multipart/alternative child container.
     msg_body = MIMEMultipart('alternative')
@@ -49,9 +49,9 @@ def send(from, to, subject, body, attachment=""):
     try:
         #Provide the contents of the email.
         response = client.send_raw_email(
-            Source=from,
+            Source=sender,
             Destinations=[
-                to
+                receiver
             ],
             RawMessage={
                 'Data':msg.as_string(),
