@@ -1,83 +1,79 @@
 import boto3
 from botocore.exceptions import ClientError
-
-# Replace sender@example.com with your "From" address.
-# This address must be verified with Amazon SES.
-SENDER = "LJ Test <lvjun.summer@yitian.site>"
-
-# Replace recipient@example.com with a "To" address. If your account 
-# is still in the sandbox, this address must be verified.
-RECIPIENT = "lvjun.summer@live.com"
-
-# Specify a configuration set. If you do not want to use a configuration
-# set, comment the following variable, and the 
-# ConfigurationSetName=CONFIGURATION_SET argument below.
-CONFIGURATION_SET = "ConfigSet"
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from email.mime.application import MIMEApplication
 
 # If necessary, replace us-west-2 with the AWS Region you're using for Amazon SES.
 AWS_REGION = "ap-southeast-1"
 
-# The subject line for the email.
-SUBJECT = "Amazon SES Test (SDK for Python)"
-
-# The email body for recipients with non-HTML email clients.
-BODY_TEXT = ("Amazon SES Test (Python)\r\n"
-             "This email was sent with Amazon SES using the "
-             "AWS SDK for Python (Boto)."
-            )
-            
-# The HTML body of the email.
-BODY_HTML = """<html>
-<head></head>
-<body>
-  <h1>Amazon SES Test (SDK for Python)</h1>
-  <p>This email was sent with
-    <a href='https://aws.amazon.com/ses/'>Amazon SES</a> using the
-    <a href='https://aws.amazon.com/sdk-for-python/'>
-      AWS SDK for Python (Boto)</a>.</p>
-</body>
-</html>
-            """            
-
 # The character encoding for the email.
 CHARSET = "UTF-8"
 
-# Create a new SES resource and specify a region.
-client = boto3.client('ses',region_name=AWS_REGION)
+define send(from, to, subject, body, attachment=""):
+    # Create a new SES resource and specify a region.
+    client = boto3.client('ses',region_name=AWS_REGION)
+    # Create a multipart/mixed parent container.
+    msg = MIMEMultipart('mixed')
+    # Add subject, from and to lines.
+    msg['Subject'] = subject 
+    msg['From'] = from 
+    msg['To'] = to
 
-# Try to send the email.
-try:
-    #Provide the contents of the email.
-    response = client.send_email(
-        Destination={
-            'ToAddresses': [
-                RECIPIENT,
+    # Create a multipart/alternative child container.
+    msg_body = MIMEMultipart('alternative')
+
+    # Encode the text and HTML content and set the character encoding. This step is
+    # necessary if you're sending a message with characters outside the ASCII range.
+    htmlpart = MIMEText(body.encode(CHARSET), 'text', CHARSET)
+
+    # Add the text and HTML parts to the child container.
+    msg_body.attach(htmlpart)
+
+    # Attach the multipart/alternative child container to the multipart/mixed
+    # parent container.
+    msg.attach(msg_body)
+    
+    if len(attachment) > 0 :
+        # Define the attachment part and encode it using MIMEApplication.
+        att = MIMEApplication(open(attachment, 'rb').read())
+
+        # Add a header to tell the email client to treat this part as an attachment,
+        # and to give the attachment a name.
+        att.add_header('Content-Disposition','attachment',filename=os.path.basename(attachment))
+
+        # Add the attachment to the parent container.
+        msg.attach(att)
+        
+    #print(msg)
+    try:
+        #Provide the contents of the email.
+        response = client.send_raw_email(
+            Source=from,
+            Destinations=[
+                to
             ],
-        },
-        Message={
-            'Body': {
-                'Html': {
-                    'Charset': CHARSET,
-                    'Data': BODY_HTML,
-                },
-                'Text': {
-                    'Charset': CHARSET,
-                    'Data': BODY_TEXT,
-                },
-            },
-            'Subject': {
-                'Charset': CHARSET,
-                'Data': SUBJECT,
-            },
-        },
-        Source=SENDER,
-        # If you are not using a configuration set, comment or delete the
-        # following line
-        # ConfigurationSetName=CONFIGURATION_SET,
-    )
-# Display an error if something goes wrong.	
-except ClientError as e:
-    print(e.response['Error']['Message'])
-else:
-    print("Email sent! Message ID:"),
-    print(response['MessageId'])
+            RawMessage={
+                'Data':msg.as_string(),
+            }
+        )
+    # Display an error if something goes wrong.	
+    except ClientError as e:
+        print(e.response['Error']['Message'])
+    else:
+        print("Email sent! Message ID:"),
+        print(response['MessageId'])
+
+if __name__ == "__main__":
+    from sys import argv, exit
+
+    def usage():
+        print("""sendbyaws usage:
+python sendbyasw.py <from> <to> <subject> <text body> <path of attachment>""")
+        
+    if not len(argv) > 4:
+        usage()
+        exit(64)
+        
+    send(argv[0], argv[1], argv[2], argv[3])
+    print("done")
