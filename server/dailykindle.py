@@ -101,7 +101,7 @@ def render_and_write(template_name, context, output_name, output_dir):
 
 def mobi(input_file, exec_path):
     """Execute the KindleGen binary to create a MOBI file."""
-    print(exec_path, input_file)
+    print("executing:", exec_path, input_file)
     system("%s %s" % (exec_path, input_file))
 
 if __name__ == "__main__":
