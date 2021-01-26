@@ -15,7 +15,7 @@ RECIPIENT = "lvjun.summer@live.com"
 CONFIGURATION_SET = "ConfigSet"
 
 # If necessary, replace us-west-2 with the AWS Region you're using for Amazon SES.
-AWS_REGION = "us-west-2"
+AWS_REGION = "ap-southeast-1"
 
 # The subject line for the email.
 SUBJECT = "Amazon SES Test (SDK for Python)"
