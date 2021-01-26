@@ -22,7 +22,7 @@ dailykindle.mobi(os.path.join(dir, '../temp/daily.opf'), '../kindlegen/kindlegen
 
 date = time.strftime("%m/%d/%Y")
 
-sendbyaws.send(s[0].strip('\n'), s[1].strip('\n'), ('Daily RSS'+ date), 'RSS DAILY ' + date, "DailyRSS"+date+".mobi",os.path.join(dir, '../temp/daily.mobi'))
+sendbyaws.send(s[0].strip('\n'), s[1].strip('\n'), ('Daily RSS'+ date), 'RSS DAILY ' + date,os.path.join(dir, '../temp/daily.mobi'))
 '''
 message = sendgrid.Mail()
 sg = sendgrid.SendGridClient(s[0].strip('\n'), s[1].strip('\n'))
