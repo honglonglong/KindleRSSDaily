@@ -37,7 +37,7 @@ def send(sender, receiver, subject, body, attachment=""):
     
     if len(attachment) > 0 :
         # Define the attachment part and encode it using MIMEApplication.
-        att = MIMEApplication(open(attachment, 'rb').read())
+        att = MIMEApplication(open(os.path.abspath(attachment), 'rb').read())
 
         # Add a header to tell the email client to treat this part as an attachment,
         # and to give the attachment a name.
