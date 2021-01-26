@@ -16,9 +16,11 @@ p = open("/opt/kindle/kindle-pass.txt", "r")
 s = p.readlines()
 p.close()
 
+temppath = os.path.abspath(os.path.join(dir, '../temp/'))
+kgen=os.path.abspath(os.path.join(dir, '../kindlegen/kindlegen'))
 
-dailykindle.build(feeds, os.path.join(dir, '../temp/'), timedelta(1))
-dailykindle.mobi(os.path.join(dir, '../temp/daily.opf'), os.path.join(dir, '../kindlegen/kindlegen'))
+dailykindle.build(feeds, temppath, timedelta(1))
+dailykindle.mobi(os.path.join(temppath, 'daily.opf'), kgen)
 
 date = time.strftime("%m/%d/%Y")
 
