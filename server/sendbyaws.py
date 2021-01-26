@@ -45,7 +45,7 @@ def send(sender, receiver, subject, body, attachment=""):
         # Add the attachment to the parent container.
         msg.attach(att)
         
-    #print(msg)
+    print(msg)
     try:
         #Provide the contents of the email.
         response = client.send_raw_email(
@@ -71,9 +71,11 @@ if __name__ == "__main__":
         print("""sendbyaws usage:
 python sendbyasw.py <from> <to> <subject> <text body> <path of attachment>""")
         
+    print("Number of argv=",len(argv))
+    
     if not len(argv) > 4:
         usage()
         exit(64)
         
-    send(argv[0], argv[1], argv[2], argv[3])
+    send(argv[0], argv[1], argv[2], argv[3], argv[4])
     print("done")
