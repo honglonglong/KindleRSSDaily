@@ -2,8 +2,9 @@ from datetime import timedelta
 import smtplib
 import os
 import dailykindle
-import sendgrid
+#import sendgrid
 import time
+import sendbyaws
 
 dir = os.path.dirname(__file__)
 
@@ -20,6 +21,9 @@ dailykindle.build(feeds, os.path.join(dir, '../temp/'), timedelta(1))
 dailykindle.mobi(os.path.join(dir, '../temp/daily.opf'), '../kindlegen/kindlegen')
 
 date = time.strftime("%m/%d/%Y")
+
+sendbyaws.send(s[0].strip('\n'), s[1].strip('\n'), ('Daily RSS'+ date), 'RSS DAILY ' + date, "DailyRSS"+date+".mobi",os.path.join(dir, '../temp/daily.mobi'))
+'''
 message = sendgrid.Mail()
 sg = sendgrid.SendGridClient(s[0].strip('\n'), s[1].strip('\n'))
 message = sendgrid.Mail()
@@ -30,6 +34,7 @@ message.set_from(s[2].strip('\n'))
 message.set_text('RSS DAILY ' + date)
 status, msg = sg.send(message)
 print('[' + str(status) + ']' + msg)
+'''
 
 
 
