@@ -10,7 +10,7 @@ AWS_REGION = "ap-southeast-1"
 # The character encoding for the email.
 CHARSET = "UTF-8"
 
-define send(from, to, subject, body, attachment=""):
+def send(from, to, subject, body, attachment=""):
     # Create a new SES resource and specify a region.
     client = boto3.client('ses',region_name=AWS_REGION)
     # Create a multipart/mixed parent container.
