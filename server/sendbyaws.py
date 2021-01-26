@@ -73,7 +73,7 @@ try:
         Source=SENDER,
         # If you are not using a configuration set, comment or delete the
         # following line
-        ConfigurationSetName=CONFIGURATION_SET,
+        # ConfigurationSetName=CONFIGURATION_SET,
     )
 # Display an error if something goes wrong.	
 except ClientError as e:
