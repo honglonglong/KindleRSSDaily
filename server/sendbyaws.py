@@ -77,5 +77,5 @@ python sendbyasw.py <from> <to> <subject> <text body> <path of attachment>""")
         usage()
         exit(64)
         
-    send(argv[0], argv[1], argv[2], argv[3], argv[4])
+    send(argv[1], argv[2], argv[3], argv[4], argv[5])
     print("done")
