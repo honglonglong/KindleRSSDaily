@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ncx PUBLIC "-//NISO//DTD ncx 2005-1//EN" "http://www.daisy.org/z3986/2005/ncx-2005-1.dtd">
+<ncx xmlns="http://www.daisy.org/z3986/2005/ncx/" version="2005-1" xml:lang="en-US">
+  <head>
+    <meta name="dtb:uid" content="BookId"/>
+    <meta name="dtb:depth" content="2"/>
+    <meta name="dtb:totalPageCount" content="0"/>
+    <meta name="dtb:maxPageNumber" content="0"/>
+  </head>
+  <docTitle><text>DailyKindle 2021-01-26</text></docTitle>
+  <docAuthor><text>DailyKindle</text></docAuthor>
+  <navMap>
+
+    <navPoint class="toc" id="toc" playOrder="1">
+      <navLabel><text>Table of Contents</text></navLabel>
+      <content src="toc.html"/>
+    </navPoint>
+
+    
+
+    <navPoint
+        class="chapter"
+        id="chapter_2"
+        playOrder="2">
+      <navLabel><text>知乎日报</text></navLabel>
+      <content src="2.html"/>
+
+      
+      <navPoint
+          class="section"
+          id="_2.1"
+          playOrder="3">
+        <navLabel><text>怎么知道质子和中子是由夸克组成的？</text></navLabel>
+        <content src="2.html#id_2.1"/>
+      </navPoint>
+      
+      <navPoint
+          class="section"
+          id="_2.2"
+          playOrder="4">
+        <navLabel><text>如何平衡奋斗和身体健康？</text></navLabel>
+        <content src="2.html#id_2.2"/>
+      </navPoint>
+      
+      <navPoint
+          class="section"
+          id="_2.3"
+          playOrder="5">
+        <navLabel><text>请问所谓的食物相克是真的还是假的？</text></navLabel>
+        <content src="2.html#id_2.3"/>
+      </navPoint>
+      
+      <navPoint
+          class="section"
+          id="_2.4"
+          playOrder="6">
+        <navLabel><text>一个人正常的挨饿极限是多少？</text></navLabel>
+        <content src="2.html#id_2.4"/>
+      </navPoint>
+      
+      <navPoint
+          class="section"
+          id="_2.5"
+          playOrder="7">
+        <navLabel><text>听障宝宝如何欣赏音乐？</text></navLabel>
+        <content src="2.html#id_2.5"/>
+      </navPoint>
+      
+      <navPoint
+          class="section"
+          id="_2.6"
+          playOrder="8">
+        <navLabel><text>瞎扯 · 如何正确地吐槽</text></navLabel>
+        <content src="2.html#id_2.6"/>
+      </navPoint>
+      
+
+    </navPoint>
+    
+
+    <navPoint
+        class="chapter"
+        id="chapter_3"
+        playOrder="9">
+      <navLabel><text>爱范儿</text></navLabel>
+      <content src="3.html"/>
+
+      
+      <navPoint
+          class="section"
+          id="_3.1"
+          playOrder="10">
+        <navLabel><text>魔性游戏「合成大西瓜」，让我玩到半夜不回家</text></navLabel>
+        <content src="3.html#id_3.1"/>
+      </navPoint>
+      
+      <navPoint
+          class="section"
+          id="_3.2"
+          playOrder="11">
+        <navLabel><text>拿出 M1 芯的苹果，今年可能会让英特尔、AMD 笔电很难受</text></navLabel>
+        <content src="3.html#id_3.2"/>
+      </navPoint>
+      
+      <navPoint
+          class="section"
+          id="_3.3"
+          playOrder="12">
+        <navLabel><text>为了做旗舰机，手机厂商逼着高通挤了一管「牙膏」| 硬哲学</text></navLabel>
+        <content src="3.html#id_3.3"/>
+      </navPoint>
+      
+      <navPoint
+          class="section"
+          id="_3.4"
+          playOrder="13">
+        <navLabel><text>华强北可能再也没法生产散装 iPhone 了</text></navLabel>
+        <content src="3.html#id_3.4"/>
+      </navPoint>
+      
+      <navPoint
+          class="section"
+          id="_3.5"
+          playOrder="14">
+        <navLabel><text>早报 | 小米将终止专营店模式 / 苹果预告 2021 新春短片 / 快手正式上市招股</text></navLabel>
+        <content src="3.html#id_3.5"/>
+      </navPoint>
+      
+      <navPoint
+          class="section"
+          id="_3.6"
+          playOrder="15">
+        <navLabel><text>关于三星 S21 Ultra，我还有这些感受想跟你说</text></navLabel>
+        <content src="3.html#id_3.6"/>
+      </navPoint>
+      
+      <navPoint
+          class="section"
+          id="_3.7"
+          playOrder="16">
+        <navLabel><text>跨越 4600 公里成功分发量子密钥，永不担心被破解的加密方式真的存在？</text></navLabel>
+        <content src="3.html#id_3.7"/>
+      </navPoint>
+      
+      <navPoint
+          class="section"
+          id="_3.8"
+          playOrder="17">
+        <navLabel><text>这个技术堪称「美颜照妖镜」，让「照骗」瞬间现出原形</text></navLabel>
+        <content src="3.html#id_3.8"/>
+      </navPoint>
+      
+      <navPoint
+          class="section"
+          id="_3.9"
+          playOrder="18">
+        <navLabel><text>不存在的潘博文真的存在？都是心理疾病在作怪</text></navLabel>
+        <content src="3.html#id_3.9"/>
+      </navPoint>
+      
+      <navPoint
+          class="section"
+          id="_3.10"
+          playOrder="19">
+        <navLabel><text>下一代 iPhone 能否用上 120Hz 高刷新率，要看它了</text></navLabel>
+        <content src="3.html#id_3.10"/>
+      </navPoint>
+      
+      <navPoint
+          class="section"
+          id="_3.11"
+          playOrder="20">
+        <navLabel><text>早报 | 新 iMac 或将支持蜂窝网络和 Face ID / 小米 10 降价发售 / 索尼或将重启小屏手机系列</text></navLabel>
+        <content src="3.html#id_3.11"/>
+      </navPoint>
+      
+
+    </navPoint>
+    
+
+  </navMap>
+</ncx>
